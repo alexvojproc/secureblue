@@ -73,7 +73,7 @@ jobs:
         env:
           RECIPE: ${{ inputs.recipe }}
         run: |
-          echo "REGISTRY=ghcr.io/secureblue" >> "${GITHUB_ENV}"
+          echo "REGISTRY=ghcr.io/alexvojproc" >> "${GITHUB_ENV}"
           echo "IMAGE_NAME=$(grep '^name:' "./recipes/${RECIPE}" | sed 's/^name: //')" >> "${GITHUB_ENV}"
           echo "IMAGE_MAJOR_VERSION=$(grep '^image-version:' "./recipes/${RECIPE}" | sed 's/^image-version: //')" >> "${GITHUB_ENV}"
           BASE_IMAGE=$(grep '^base-image:' "./recipes/${RECIPE}" | sed 's/^base-image: //')
@@ -110,7 +110,7 @@ jobs:
             UPSTREAM_REGISTRY='quay.io/fedora-ostree-desktops'
             UPSTREAM_PUBKEY='https://gitlab.com/fedora/ostree/ci-test/-/raw/main/quay.io-fedora-ostree-desktops.pub'
           else
-            UPSTREAM_REGISTRY='ghcr.io/secureblue'
+            UPSTREAM_REGISTRY='ghcr.io/alexvojproc'
             UPSTREAM_PUBKEY='https://raw.githubusercontent.com/secureblue/secureblue/refs/heads/live/cosign.pub'
           fi
           if ! cosign verify --key "${UPSTREAM_PUBKEY}" "${UPSTREAM_REGISTRY}/${UPSTREAM_CONTAINER}" | jq; then
