@@ -35,9 +35,6 @@ install:
     - pam_yubico
     - pamu2fcfg
     - yubikey-manager
-
-    # ensure universal font coverage
-    - google-noto-fonts-all
 remove:
   packages:
     - firefox
