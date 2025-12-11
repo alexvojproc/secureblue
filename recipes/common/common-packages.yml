@@ -18,6 +18,9 @@ install:
     - hardened_malloc
     - run0edit
     - dnsconfd-unbound
+    - ima-evm-utils
+    - keyring-ima-signer
+    - rpm-plugin-ima
 
     # missing upstream
     - openssl
