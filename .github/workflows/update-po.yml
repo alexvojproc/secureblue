@@ -5,8 +5,6 @@
 name: update-po
 permissions: {}
 on:
-  schedule:
-    - cron: 00 0 * * MON # run weekly
   workflow_dispatch:
 
 concurrency:

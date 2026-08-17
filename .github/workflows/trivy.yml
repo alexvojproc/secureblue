@@ -5,10 +5,6 @@
 name: trivy
 permissions: {}
 on:
-  schedule:
-    - cron:
-        "00 8 * * *" # build at 8:00 UTC every day
-        # 120 minutes after secureblue images start building
   push:
     branches:
       - live
@@ -24,7 +20,6 @@ concurrency:
 jobs:
   build:
     name: Trivy
-    if: github.triggering_actor == 'royaloughtness' || github.event_name == 'schedule' || github.event_name == 'push'
     runs-on: ubuntu-slim
     permissions:
       security-events: write # write findings to github
