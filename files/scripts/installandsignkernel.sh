@@ -9,7 +9,7 @@ set -euo pipefail
 
 KERNEL_VERSION="$(rpm -q 'kernel' --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
 SECUREBLUE_KERNEL_VERSION="${KERNEL_VERSION/.fc/.secureblue.*.fc}"
-dnf install --repo "copr:copr.fedorainfracloud.org:secureblue:packages" "kernel-${SECUREBLUE_KERNEL_VERSION}" -y
+dnf install --repo "copr:copr.fedorainfracloud.org:alexvojproc:kernel" kernel -y
 
 SECUREBLUE_NEW_KERNEL_VERSION="$(rpm -q 'kernel' --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
 VMLINUZ_PATH="/usr/lib/modules/${SECUREBLUE_NEW_KERNEL_VERSION}/vmlinuz"
