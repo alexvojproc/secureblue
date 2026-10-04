@@ -1,23 +1,12 @@
-diff --git a/.github/workflows/build-all-testing.yml b/.github/workflows/build-all-testing.yml
-index 67c68c50..76788d14 100644
---- a/.github/workflows/build-all-testing.yml
-+++ b/.github/workflows/build-all-testing.yml
-@@ -4,8 +4,6 @@ permissions: {}
-
- on:
-   workflow_dispatch:
--  schedule:
--    - cron: "00 6 * * *" # build at 6:00 UTC every day
-
- concurrency:
-   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
 diff --git a/.github/workflows/build-all.yml b/.github/workflows/build-all.yml
 index 8a945450..7a91b999 100644
 --- a/.github/workflows/build-all.yml
 +++ b/.github/workflows/build-all.yml
 @@ -5,16 +5,6 @@
  name: build
+
  permissions: {}
+
  on:
 -  schedule:
 -    - cron: "00 6 * * *" # build at 6:00 UTC every day

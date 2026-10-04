@@ -51,7 +51,8 @@ done
 
 # Generate PCR keypair.
 mkdir -p uki/keys/PCR
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out secrets/PCR.key
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 \
+  -out secrets/PCR.key &> /dev/null
 openssl pkey -in secrets/PCR.key -pubout -out uki/keys/PCR/PCR.pem
 
 # Now sign the EFI signature lists. The PK is a self-signed payload, and it
