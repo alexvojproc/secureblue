@@ -5,8 +5,6 @@
 name: update-modules
 permissions: {}
 on:
-  schedule:
-    - cron: 00 0 * * TUE # run weekly
   workflow_dispatch:
 
 concurrency:

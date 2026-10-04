@@ -7,16 +7,6 @@ name: build
 permissions: {}
 
 on:
-  schedule:
-    - cron: "00 6 * * *" # build at 6:00 UTC every day
-
-  push:
-    branches-ignore: # don't rebuild for dependabot
-      - "dependabot/**"
-      - "create-pull-request/**"
-    paths-ignore: # don't rebuild if only documentation has changed
-      - "**.md"
-  # checkov:skip=CKV_GHA_7
   workflow_dispatch: # allow manually triggering builds
 
 # Cancels running workflows if a new workflow run for
@@ -28,7 +18,7 @@ concurrency:
 jobs:
   silverblue-main:
     name: Build silverblue main
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     permissions:
       contents: read # Needed to pull the repo for the build
       actions: read # Needed to read actions and actions logs for provenance generation
@@ -44,7 +34,7 @@ jobs:
 
   silverblue-main-sealed:
     name: Build silverblue main sealed
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: silverblue-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -64,7 +54,7 @@ jobs:
 
   kinoite-main:
     name: Build kinoite main
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     permissions:
       contents: read # Needed to pull the repo for the build
       actions: read # Needed to read actions and actions logs for provenance generation
@@ -80,7 +70,7 @@ jobs:
 
   kinoite-main-sealed:
     name: Build kinoite main sealed
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: kinoite-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -100,7 +90,7 @@ jobs:
 
   sericea-main:
     name: Build sericea main
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     permissions:
       contents: read # Needed to pull the repo for the build
       actions: read # Needed to read actions and actions logs for provenance generation
@@ -116,7 +106,7 @@ jobs:
 
   sericea-main-sealed:
     name: Build sericea main sealed
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: sericea-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -136,7 +126,7 @@ jobs:
 
   cosmic-main:
     name: Build cosmic main
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     permissions:
       contents: read # Needed to pull the repo for the build
       actions: read # Needed to read actions and actions logs for provenance generation
@@ -152,7 +142,7 @@ jobs:
 
   cosmic-main-sealed:
     name: Build cosmic main sealed
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: cosmic-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -172,7 +162,7 @@ jobs:
 
   silverblue-nvidia:
     name: Build silverblue nvidia images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: silverblue-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -195,7 +185,7 @@ jobs:
 
   kinoite-nvidia:
     name: Build kinoite nvidia images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: kinoite-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -218,7 +208,7 @@ jobs:
 
   sericea-nvidia:
     name: Build sericea nvidia images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: sericea-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -241,7 +231,7 @@ jobs:
 
   cosmic-nvidia:
     name: Build cosmic nvidia images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: cosmic-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -264,7 +254,7 @@ jobs:
 
   securecore-main:
     name: Build securecore main images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     permissions:
       contents: read # Needed to pull the repo for the build
       actions: read # Needed to read actions and actions logs for provenance generation
@@ -280,7 +270,7 @@ jobs:
 
   securecore-main-sealed:
     name: Build securecore main sealed
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: securecore-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -300,7 +290,7 @@ jobs:
 
   securecore-nvidia:
     name: Build securecore nvidia images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: securecore-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -323,7 +313,7 @@ jobs:
 
   securecore-zfs-main:
     name: Build securecore zfs main images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: securecore-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -340,7 +330,7 @@ jobs:
 
   securecore-zfs-nvidia:
     name: Build securecore zfs nvidia images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: securecore-zfs-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -363,7 +353,7 @@ jobs:
 
   iot-main:
     name: Build iot main images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     permissions:
       contents: read # Needed to pull the repo for the build
       actions: read # Needed to read actions and actions logs for provenance generation
@@ -379,7 +369,7 @@ jobs:
 
   iot-main-sealed:
     name: Build iot main sealed
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: iot-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -399,7 +389,7 @@ jobs:
 
   iot-nvidia:
     name: Build iot nvidia images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: iot-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -422,7 +412,7 @@ jobs:
 
   iot-zfs-main:
     name: Build iot zfs main images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: iot-main
     permissions:
       contents: read # Needed to pull the repo for the build
@@ -439,7 +429,7 @@ jobs:
 
   iot-zfs-nvidia:
     name: Build iot zfs nvidia images
-    if: github.triggering_actor == 'royaloughtness' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
+    if: github.triggering_actor == 'alexvojproc' || github.triggering_actor == 'github-actions[bot]' || github.event_name == 'schedule' || github.event_name == 'push'
     needs: iot-zfs-main
     permissions:
       contents: read # Needed to pull the repo for the build
